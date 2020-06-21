@@ -1,34 +1,20 @@
 import React, { useState } from "react";
-// import { Link, useLocation, useHistory } from "react-router-dom";
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useSelector } from "react-redux";
 import Backdrop from "./Backdrop";
 import useBackdrop from "../hooks/useBackdrop";
 import inBrowser from "../lib/checkInBrowser";
-// import Auth from '../settings/auth';
-// import shopbag from "./location-shopping.svg";
 
-// import tw, { styled } from "twin.macro";
-
-// const SearchInSearch = styled.div`
-//   ${tw`ml-auto p-4 text-purple-800`}
-// `;
-
-
-function Navbar(props) {
+function Navbar() {
   const test = useSelector((state) => state.test);
   const [backdrop, setBackdrop] = useBackdrop();
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
-  const [duthy, setDuthy] = useState(false);
-  // const location = useLocation();
+  
   const router = useRouter();
-  
-  // const history = useHistory();
 
-  
   const onLogout = (event) => { 
     event.preventDefault();
     if (inBrowser){
@@ -45,19 +31,6 @@ function Navbar(props) {
     setShowSearch(false);
     setShowAccount(false);
   }
-
-//   const account = {
-//     status: false,
-//     checkStatus() {
-//         return this.status;
-//     },
-//     on() {
-//         this.status = false
-//     },
-//     off() {
-//         this.status = true
-//     }
-// }
   
   
   return (
@@ -69,7 +42,7 @@ function Navbar(props) {
         style={{height:'61px'}}
         
       >
-        {/* <img src={shopbag} className='h-6 w-6 mt-4 mr-1 ml-3' /> */}
+        
         <div className="p-4 sm:text-lg">
           <i className="fas fa-gifts"></i>
         </div>
@@ -162,11 +135,7 @@ function Navbar(props) {
           showMenu ? "block" : "hidden"
         } fixed bg-purple-800 w-full sm:w-auto overflow-y-auto left-0 sm:left-auto p-4 border-purple-500 border-t-4 border-solid sm:h-auto h-full`}
         style={{
-          // bottom: 0,
-          // borderTopColor: "#6c63ff",
-          // top:0,
           zIndex: 50,
-          // top: "64.12px",
           top: "56.24px",
         }}
       >
@@ -201,16 +170,7 @@ function Navbar(props) {
               <div className="tracking-wider  text-white">Cart</div>
             </div>
           </Link>
-          {/* <div className="p-1">
-            <div className="p-4 bg-red-200 border-solid border-l-4 border-red-600 flex rounded-md">
-              <div>You have failed transaction</div>
-              <div className="ml-auto">X</div>
-            </div>
-          </div> */}
 
-          {/* <div className="p-1 pt-5 text-right text-white underline">
-            Show All Notification
-          </div> */}
         </div>
       </div>
 
@@ -249,11 +209,6 @@ function Navbar(props) {
           <div className='ml-auto p-4 text-purple-800'>
             <i className="fas fa-search"></i>
           </div>
-          {/* <button onClick={() => setDuthy(true)}>
-            GANTI AYUNG
-          </button> */}
-          {/* <div className="my-auto text-purple-800 ml-3">
-          </div> */}
         </div>
       </div>
       <Backdrop

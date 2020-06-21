@@ -1,9 +1,5 @@
 import React from "react";
 import Link from "next/link";
-// import grocery from "./grocery.jpg";
-// import momnkids from "./momnkids.jpg";
-// import healthbeauty from "./healthbeauty.jpg";
-// import electronic from "./electronic.jpg";
 
 function Sidebar() {
   return (

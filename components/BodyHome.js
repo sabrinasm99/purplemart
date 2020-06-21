@@ -1,27 +1,8 @@
-import React, { useState, useEffect } from "react";
-// import { connect, useSelector } from "react-redux";
+import React from "react";
 import { Site } from "../config/site";
-// import { changeName } from "../action/action";
-// import Axios from "axios";
 
-// import { set } from "mongoose";
 
 function BodyHome(props) {
-  console.log(props, 'oooo')
-  // const test = useSelector((state) => state.test);
-  const [products, setProducts] = useState([]);
-
-  console.log(props, 'test');  
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const result = await Axios.get(`${Site.getProduct}`);
-  //     setProducts(result.data);
-  //   };
-
-  //   getData();
-  //   setProducts(props.data);
-  // }, []);
-
   let productList = null;
   if (props.result.length > 0) {
     productList = props.result.map((val) => {
@@ -32,7 +13,6 @@ function BodyHome(props) {
         >
           <div
             className="rounded-md shadow-md h-64 p-3 md:p-2 flex flex-col bg-white text-center "
-            // style={{ maxWidth: "180px" }}
           >
             <div>
               <img
@@ -40,7 +20,7 @@ function BodyHome(props) {
                 alt="product"
                 className="h-24 md:h-32 m-auto"
               />
-              {/* <div className="absolute top-0 left-0 inline-flex items-center p-2">
+              <div className="absolute top-0 left-0 inline-flex items-center p-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-6 h-6 text-gray-400"
@@ -55,7 +35,7 @@ function BodyHome(props) {
                   <circle cx={10} cy={10} r={7} />
                   <line x1={21} y1={21} x2={15} y2={15} />
                 </svg>
-              </div> */}
+              </div>
             </div>
             <div className="mt-auto w-full">
               <span className="w-full text-gray-800 text-sm md:text-base">
@@ -88,8 +68,6 @@ function BodyHome(props) {
 }
 
 
-// const mapStateToProps = (state) => ({
-//   test: state.test,
-// });
+
 
 export default BodyHome;
