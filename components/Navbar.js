@@ -38,15 +38,13 @@ function Navbar() {
       <div
         className={` ${
           showSearch ? "z-0 hidden" : "block z-full"
-        } flex w-full text-purple-800 bg-white top-0 inset-x-0 z-full shadow-md fixed`}
+        } flex w-full text-purple-800 bg-white top-0 inset-x-0 z-full shadow-md fixed items-baseline`}
         style={{height:'61px'}}
-        
       >
-        
-        <div className="p-4 sm:text-lg">
+        <div className="p-4 sm:text-lg lg:text-xl">
           <i className="fas fa-gifts"></i>
         </div>
-        <div className="my-auto text-lg sm:text-xl md:text-2xl font-bold ">
+        <div className="my-auto text-lg sm:text-xl lg:text-2xl font-bold ">
           <Link href="/"><div>{test.title}</div></Link>
         </div>
         <div className="m-auto relative hidden sm:block w-1/2">
