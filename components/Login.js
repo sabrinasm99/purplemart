@@ -13,14 +13,14 @@ function Login() {
   const [message, setMessage] = useState("");
   const [auth, setAuth] = useState(false);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      Auth.login();
-      console.log(Auth.checkStatus(), "cek STATUS");
-      setAuth(Auth.checkStatus());
-    }
-  }, []);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     Auth.login();
+  //     console.log(Auth.checkStatus(), "cek STATUS");
+  //     setAuth(Auth.checkStatus());
+  //   }
+  // }, []);
 
   const changeInputPassword = (event) => {
     setPassword(event.target.value);
@@ -47,9 +47,9 @@ function Login() {
       );
   };
 
-  if (auth) {
-    Router.push('/register');
-  }
+  // if (auth) {
+  //   Router.push('/register');
+  // }
 
   return (
     <React.Fragment>
