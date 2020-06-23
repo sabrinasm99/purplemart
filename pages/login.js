@@ -9,15 +9,18 @@ import Login from "../components/Login";
 function login() {
   if (inBrowser && localStorage.getItem('token')) {
     Router.push('/register')
+    return (
+      <React.Fragment>
+        <Head>
+          <title>Purple Mart</title>
+        </Head>
+        <Login />
+      </React.Fragment>
+    );
+  } else {
+    return <div></div>
   }
-  return (
-    <React.Fragment>
-      <Head>
-        <title>Purple Mart</title>
-      </Head>
-      <Login />
-    </React.Fragment>
-  );
+ 
 }
 
 export default login;
