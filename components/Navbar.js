@@ -38,7 +38,7 @@ function Navbar() {
       <div
         className={` ${
           showSearch ? "z-0 hidden" : "block z-full"
-        } flex w-full text-purple-800 bg-white top-0 inset-x-0 z-full shadow-md fixed items-baseline`}
+        } flex w-full text-purple-800 bg-white top-0 inset-x-0 z-full shadow-md fixed`}
         style={{height:'61px'}}
       >
         <div className="p-4 sm:text-lg lg:text-xl">
@@ -100,7 +100,7 @@ function Navbar() {
           <i className="fas fa-search"></i>
           
         </div>
-        <div className="ml-auto my-auto hidden sm:block text-lg">
+        <div className="ml-auto my-auto hidden sm:block text-lg cursor-pointer">
           <Link href="/login">
             <i className="fas fa-shopping-cart"></i>
           </Link>

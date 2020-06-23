@@ -1,4 +1,4 @@
-// import Head from 'next/head';
+import Head from 'next/head';
 import BodyHome from "../components/BodyHome";
 import Axios from "axios";
 import Sidebar from "../components/Sidebar";
@@ -13,6 +13,7 @@ export default function Home(props) {
   return (
     <React.Fragment>
       <Provider store={store}>
+        <Head><title>Purple Mart</title></Head>
         <Navbar />
         <Title />
         <Sidebar />
