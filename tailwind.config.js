@@ -288,6 +288,7 @@ module.exports = {
     },
     height: theme => ({
       auto: 'auto',
+      px380: '380px',
       ...theme('spacing'),
       full: '100%',
       screen: '100vh',
@@ -444,6 +445,7 @@ module.exports = {
     }),
     zIndex: {
       auto: 'auto',
+      full: '9999',
       '0': '0',
       '10': '10',
       '20': '20',

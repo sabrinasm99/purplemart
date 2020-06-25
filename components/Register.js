@@ -55,6 +55,7 @@ function Register() {
                   className="w-full md:w-2/3 block border border-gray-500 border-solid rounded-lg pl-3 p-1 focus:outline-none"
                   placeholder="Thomas Lion"
                   onChange={changeInputName}
+                  value={name}
                 />
               </div>
               <div className="block md:flex p-2 md:p-4">
@@ -64,6 +65,7 @@ function Register() {
                   className="w-full md:w-2/3 block border border-gray-500 border-solid rounded-lg pl-3 p-1 focus:outline-none"
                   placeholder="thomas_14"
                   onChange={changeInputUsername}
+                  value={username}
                 />
               </div>
               <div className="block md:flex p-2 md:p-4">
@@ -73,6 +75,7 @@ function Register() {
                   className="w-full md:w-2/3 block border border-gray-500 border-solid rounded-lg pl-3 p-1 focus:outline-none"
                   placeholder="********"
                   onChange={changeInputPassword}
+                  value={password}
                 />
               </div>
               <div className="block md:flex p-2 md:p-4">
@@ -81,6 +84,7 @@ function Register() {
                   className="focus:outline-none w-full md:w-2/3 block border border-gray-500 border-solid rounded-lg h-32 pl-3 p-1"
                   placeholder="Jalan Duri Selatan II"
                   onChange={changeInputAddress}
+                  value={address}
                 />
               </div>
             </div>

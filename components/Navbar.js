@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+import Router, { useRouter } from "next/router";
+import Link from "next/link";
 import { useSelector } from "react-redux";
 import Backdrop from "./Backdrop";
 import useBackdrop from "../hooks/useBackdrop";
@@ -12,40 +12,41 @@ function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
-  
   const router = useRouter();
 
-  const onLogout = (event) => { 
+  const onLogout = (event) => {
     event.preventDefault();
-    if (inBrowser){
-      localStorage.removeItem('token');
-      localStorage.removeItem('role');
+    if (inBrowser) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("name");
     }
     clearAll();
-    Router.push('/');
-  } 
+    Router.push("/");
+  };
 
   function clearAll() {
     setBackdrop(false);
     setShowMenu(false);
     setShowSearch(false);
     setShowAccount(false);
+    // setShowAuth(false);
   }
-  
-  
+
   return (
     <React.Fragment>
       <div
         className={` ${
           showSearch ? "z-0 hidden" : "block z-full"
         } flex w-full text-purple-800 bg-white top-0 inset-x-0 z-full shadow-md fixed`}
-        style={{height:'61px'}}
+        style={{ height: "61px" }}
       >
-        <div className="p-4 sm:text-lg lg:text-xl">
+        {/* <div className="p-4 sm:text-lg lg:text-xl">
           <i className="fas fa-gifts"></i>
-        </div>
-        <div className="my-auto text-lg sm:text-xl lg:text-2xl font-bold ">
-          <Link href="/"><div>{test.title}</div></Link>
+        </div> */}
+        <div className="pl-4 py-4 text-lg sm:text-xl lg:text-2xl font-bold ">
+          <Link href="/">
+            <div>{test.title}</div>
+          </Link>
         </div>
         <div className="m-auto relative hidden sm:block w-1/2">
           <div>
@@ -72,62 +73,73 @@ function Navbar() {
             </div>
           </div>
         </div>
-        {router.pathname === '/dashboard'? (
+        {router.pathname === "/member-home" ? (
           <React.Fragment>
-        <div className='ml-auto text-purple-800 p-4'>
-          <div className='py-1 px-2 rounded-full bg-gray-200 text-sm'
-          onClick={() => {
-            clearAll();
-            setShowAccount(true);
-            setBackdrop(true);
-          }}>
-          <i className="fas fa-user"></i>
-          </div>
-        </div>
-        </React.Fragment>
-        )
-        :
-        (
-        <React.Fragment>
-        <div
-          className="py-4 ml-auto text-purple-800 block sm:hidden"
-          onClick={() => {
-            clearAll();
-            setShowSearch(true);
-          }}
-        >
-          
-          <i className="fas fa-search"></i>
-          
-        </div>
-        <div className="ml-auto my-auto hidden sm:block text-lg cursor-pointer">
-          <Link href="/login">
-            <i className="fas fa-shopping-cart"></i>
-          </Link>
-        </div>
-        <div className="p-4 hidden sm:block">
-          <Link href="/login">
-            <div className="bg-purple-800 text-white rounded-md tracking-wider text-sm py-1 px-2 cursor-pointer">
-              LOGIN
+            <div className="my-auto ml-auto">
+              <div
+                className="py-1 px-2 rounded-full bg-gray-200 text-sm block sm:hidden cursor-pointer"
+                onClick={() => {
+                  clearAll();
+                  setShowSearch(true);
+                }}
+              >
+                <i className="fas fa-search"></i>
+              </div>
             </div>
-          </Link>
-        </div>
-        <div
-          className="block sm:hidden text-purple-800 p-4 cursor-pointer"
-          onClick={() => {
-            clearAll();
-            setShowMenu(true);
-          }}
-        >
-          
-          <i className="fas fa-bars"></i>
-       
-        </div>
-        </React.Fragment>
-        )
-        }
+            <div className="pl-3 md:pl-0 my-auto">
+              <div className="py-1 px-2 md:py-0 md:px-0 rounded-full md:rounded-none bg-gray-200 md:bg-white text-sm md:text-base cursor-pointer">
+                <i className="fas fa-shopping-cart"></i>
+              </div>
+            </div>
+            <div className="py-4 pr-4 pl-3 md:pl-6">
+              <div
+                className="py-1 px-2 md:py-0 md:px-0 rounded-full md:rounded-none bg-gray-200 md:bg-white text-sm md:text-base cursor-pointer"
+                onClick={() => {
+                  clearAll();
+                  setShowAccount(true);
+                  setBackdrop(true);
+                }}
+              >
+                <i className="fas fa-user"></i>
+              </div>
+            </div>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <div
+              className="py-4 ml-auto text-purple-800 block sm:hidden"
+              onClick={() => {
+                clearAll();
+                setShowSearch(true);
+              }}
+            >
+              <i className="fas fa-search"></i>
+            </div>
+            <div className="ml-auto my-auto hidden sm:block text-lg cursor-pointer">
+              <Link href="/login">
+                <i className="fas fa-shopping-cart"></i>
+              </Link>
+            </div>
+            <div className="p-4 hidden sm:block">
+              <Link href="/login">
+                <div className="bg-purple-800 text-white rounded-md tracking-wider text-sm py-1 px-2 cursor-pointer">
+                  LOGIN
+                </div>
+              </Link>
+            </div>
+            <div
+              className="block sm:hidden text-purple-800 p-4 cursor-pointer"
+              onClick={() => {
+                clearAll();
+                setShowMenu(true);
+              }}
+            >
+              <i className="fas fa-bars"></i>
+            </div>
+          </React.Fragment>
+        )}
       </div>
-      
+
       <div
         className={`${
           showMenu ? "block" : "hidden"
@@ -168,18 +180,27 @@ function Navbar() {
               <div className="tracking-wider  text-white">Cart</div>
             </div>
           </Link>
-
         </div>
       </div>
 
-      <div className={`${showAccount ? 'block' : 'hidden'} fixed text-purple-800 bg-white border-t-4 border-purple-500 left-auto right-0 w-40 h-24 shadow-md p-3 z-50`}
-      style={{top:'61px'}}>
-          <div className='text-center border-b-2 border-purple-800 text-xl tracking-widest capitalize'>{inBrowser && localStorage.getItem('role')}</div>
-          <div className='flex py-2 px-1 items-baseline cursor-pointer'
-          onClick={onLogout}>
-            <div className='pr-2'><i className="fas fa-sign-out-alt"></i></div>
-            <div className='tracking-wider'>Logout</div>
+      <div
+        className={`${
+          showAccount ? "block" : "hidden"
+        } fixed text-purple-800 bg-white border-t-4 border-purple-500 left-auto right-0 w-40 h-24 shadow-md p-3 z-50`}
+        style={{ top: "61px" }}
+      >
+        <div className="text-center border-b-2 border-purple-800 text-xl tracking-widest capitalize">
+          Duthy
+        </div>
+        <div
+          className="flex py-2 px-1 items-baseline cursor-pointer"
+          onClick={onLogout}
+        >
+          <div className="pr-2">
+            <i className="fas fa-sign-out-alt"></i>
           </div>
+          <div className="tracking-wider">Logout</div>
+        </div>
       </div>
 
       <div
@@ -204,7 +225,7 @@ function Navbar() {
               placeholder="Search..."
             />
           </div>
-          <div className='ml-auto p-4 text-purple-800'>
+          <div className="ml-auto p-4 text-purple-800">
             <i className="fas fa-search"></i>
           </div>
         </div>

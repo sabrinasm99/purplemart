@@ -9,6 +9,9 @@
     "export": "next build && next export"
   },
   "dependencies": {
+    "@emotion/babel-preset-css-prop": "^10.0.27",
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
     "@fortawesome/fontawesome-free": "^5.13.0",
     "axios": "^0.19.2",
     "netlify-plugin-cache-nextjs": "^1.4.0",
@@ -17,8 +20,12 @@
     "react-dom": "16.13.1",
     "react-hooks-global-state": "^1.0.0",
     "react-redux": "^7.2.0",
+    "react-responsive-carousel": "^3.2.8",
+    "react-slick": "^0.26.1",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "slick-carousel": "^1.8.1",
+    "twin.macro": "^1.4.1"
   },
   "devDependencies": {
     "file-loader": "^6.0.0",
