@@ -38,39 +38,34 @@ function Navbar() {
         className={` ${
           showSearch ? "z-0 hidden" : "block z-full"
         } flex w-full text-purple-800 bg-white top-0 inset-x-0 z-full shadow-md fixed`}
-        style={{ height: "61px" }}
+        // style={{ height: "61px" }}
       >
-        {/* <div className="p-4 sm:text-lg lg:text-xl">
-          <i className="fas fa-gifts"></i>
-        </div> */}
-        <div className="pl-4 py-4 text-lg sm:text-xl lg:text-2xl font-bold ">
+        <div className="pl-4 py-4 text-xl font-bold ">
           <Link href="/">
             <div>{test.title}</div>
           </Link>
         </div>
         <div className="m-auto relative hidden sm:block w-1/2">
-          <div>
-            <input
-              type="search"
-              className="pl-8 w-full pr-4 py-1  rounded-lg border-gray-200 border-2 focus:outline-none focus:shadow-outline text-gray-600 text-sm sm:text-base "
-              placeholder="Search..."
-            />
-            <div className="absolute top-0 left-0 inline-flex items-center p-1 sm:p-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 sm:w-6 h-5 sm:h-6 text-gray-400"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect x={0} y={0} width={24} height={24} stroke="none" />
-                <circle cx={9} cy={9} r={5} />
-                <line x1={17} y1={17} x2={13} y2={13} />
-              </svg>
-            </div>
+          <input
+            type="search"
+            className="pl-8 w-full pr-4 py-1  rounded-lg border-gray-200 border-2 focus:outline-none text-gray-600 text-sm sm:text-base "
+            placeholder="Search..."
+          />
+          <div className="absolute top-0 left-0 inline-flex items-center p-1 sm:p-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-5 sm:w-6 h-5 sm:h-6 text-gray-400"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <rect x={0} y={0} width={24} height={24} stroke="none" />
+              <circle cx={9} cy={9} r={5} />
+              <line x1={17} y1={17} x2={13} y2={13} />
+            </svg>
           </div>
         </div>
         {router.pathname === "/member-home" ? (
@@ -86,12 +81,12 @@ function Navbar() {
                 <i className="fas fa-search"></i>
               </div>
             </div>
-            <div className="pl-3 md:pl-0 my-auto">
+            <div className="pl-3 sm:pl-0 py-4 flex items-center">
               <div className="py-1 px-2 md:py-0 md:px-0 rounded-full md:rounded-none bg-gray-200 md:bg-white text-sm md:text-base cursor-pointer">
                 <i className="fas fa-shopping-cart"></i>
               </div>
             </div>
-            <div className="py-4 pr-4 pl-3 md:pl-6">
+            <div className="py-4 pr-4 pl-3 md:pl-6 md:flex items-center">
               <div
                 className="py-1 px-2 md:py-0 md:px-0 rounded-full md:rounded-none bg-gray-200 md:bg-white text-sm md:text-base cursor-pointer"
                 onClick={() => {
@@ -107,7 +102,7 @@ function Navbar() {
         ) : (
           <React.Fragment>
             <div
-              className="py-4 ml-auto text-purple-800 block sm:hidden"
+              className="flex items-center py-4 ml-auto text-lg sm:hidden"
               onClick={() => {
                 clearAll();
                 setShowSearch(true);
@@ -115,20 +110,20 @@ function Navbar() {
             >
               <i className="fas fa-search"></i>
             </div>
-            <div className="ml-auto my-auto hidden sm:block text-lg cursor-pointer">
+            <div className="my-auto hidden sm:block text-lg cursor-pointer">
               <Link href="/login">
                 <i className="fas fa-shopping-cart"></i>
               </Link>
             </div>
-            <div className="p-4 hidden sm:block">
+            <div className="p-4 hidden sm:flex items-center ">
               <Link href="/login">
-                <div className="bg-purple-800 text-white rounded-md tracking-wider text-sm py-1 px-2 cursor-pointer">
+                <div className="bg-purple-800 text-white rounded-md tracking-wide text-sm py-1 px-2 cursor-pointer">
                   LOGIN
                 </div>
               </Link>
             </div>
             <div
-              className="block sm:hidden text-purple-800 p-4 cursor-pointer"
+              className="flex items-center sm:hidden text-lg p-4 cursor-pointer"
               onClick={() => {
                 clearAll();
                 setShowMenu(true);
@@ -186,11 +181,11 @@ function Navbar() {
       <div
         className={`${
           showAccount ? "block" : "hidden"
-        } fixed text-purple-800 bg-white border-t-4 border-purple-500 left-auto right-0 w-40 h-24 shadow-md p-3 z-50`}
-        style={{ top: "61px" }}
+        } fixed text-purple-800 bg-white border-t-4 border-purple-500 left-auto right-0 w-40 shadow-md p-3 z-50`}
+        style={{top:'62px'}}
       >
         <div className="text-center border-b-2 border-purple-800 text-xl tracking-widest capitalize">
-          Duthy
+          {inBrowser && localStorage.getItem('name')}
         </div>
         <div
           className="flex py-2 px-1 items-baseline cursor-pointer"

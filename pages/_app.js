@@ -1,7 +1,8 @@
 import React from 'react';
 import '../styles/tailwind.css';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
+import 'keen-slider/keen-slider.min.css'
+import '../components/Keen.css'
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';

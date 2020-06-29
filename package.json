@@ -14,6 +14,7 @@
     "@emotion/styled": "^10.0.27",
     "@fortawesome/fontawesome-free": "^5.13.0",
     "axios": "^0.19.2",
+    "keen-slider": "^4.2.6",
     "netlify-plugin-cache-nextjs": "^1.4.0",
     "next": "9.4.4",
     "react": "16.13.1",
