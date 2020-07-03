@@ -1,17 +1,17 @@
 import Head from "next/head";
-import BodyHome from "../components/BodyHome";
-import Sidebar from "../components/Sidebar";
 import { Provider } from "react-redux";
-import Keen from "../components/Keen";
-import Navbar from "../components/Navbar";
 import { Site } from "../config/site";
 import store from "../components/store";
 import inBrowser from "../lib/checkInBrowser";
+import { setAuthToken } from "../utils/AuthService";
+import jwt_decode from "jwt-decode";
+import { setCurrentUser } from "../components/actions/authAction";
+import CompMemberHome from '../components/MemberHome';
 import Router from "next/router";
 
 export default function memberhome(props) {
-  if (inBrowser && !localStorage.getItem("token")) {
-    Router.push("/");
+  if (inBrowser && !localStorage.tokenLS) {
+    Router.push('/login')
   }
 
   return (
@@ -20,7 +20,10 @@ export default function memberhome(props) {
         <Head>
           <title>Purple Mart</title>
         </Head>
-        <Navbar />
+        <CompMemberHome result={props.posts} />
+
+    
+        {/* <Navbar />
         <div className="px-5 pt-5 sm:px-12 md:px-16 lg:px-20 xl:px-24 rounded-lg mt-px62">
           <Keen className="rounded-lg">
             <div className="keen-slider__slide rounded-lg">
@@ -35,7 +38,7 @@ export default function memberhome(props) {
           </Keen>
         </div>
         <Sidebar />
-        <BodyHome result={props.posts} />
+        <BodyMember result={props.posts} /> */}
       </Provider>
     </React.Fragment>
   );

@@ -1,35 +1,44 @@
 import React, { useState } from "react";
 import Router, { useRouter } from "next/router";
 import Link from "next/link";
+import {Site} from '../config/site';
 import { useSelector } from "react-redux";
 import Backdrop from "./Backdrop";
 import useBackdrop from "../hooks/useBackdrop";
 import inBrowser from "../lib/checkInBrowser";
+import Axios from "axios";
+import { logoutUser } from "./actions/authAction";
 
 function Navbar() {
   const test = useSelector((state) => state.test);
+  const auth = useSelector((state) => state.auth);
   const [backdrop, setBackdrop] = useBackdrop();
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
+  const [filter, setFilter] = useState('');
   const router = useRouter();
 
   const onLogout = (event) => {
     event.preventDefault();
-    if (inBrowser) {
-      localStorage.removeItem("token");
-      localStorage.removeItem("name");
-    }
     clearAll();
-    Router.push("/");
+    logoutUser();
+    Router.push('/login');
   };
+
+  const onChangeFilter = (event) => {
+    setFilter(event.target.value);
+    Axios.get(`${Site.getProduct}/?search=${filter}`)
+      .then(res => 
+        console.log(res, 'ini res'))
+      .catch(err => console.log(err, 'ini err'));
+  }
 
   function clearAll() {
     setBackdrop(false);
     setShowMenu(false);
     setShowSearch(false);
     setShowAccount(false);
-    // setShowAuth(false);
   }
 
   return (
@@ -38,7 +47,6 @@ function Navbar() {
         className={` ${
           showSearch ? "z-0 hidden" : "block z-full"
         } flex w-full text-purple-800 bg-white top-0 inset-x-0 z-full shadow-md fixed`}
-        // style={{ height: "61px" }}
       >
         <div className="pl-4 py-4 text-xl font-bold ">
           <Link href="/">
@@ -50,6 +58,7 @@ function Navbar() {
             type="search"
             className="pl-8 w-full pr-4 py-1  rounded-lg border-gray-200 border-2 focus:outline-none text-gray-600 text-sm sm:text-base "
             placeholder="Search..."
+            onChange={onChangeFilter}
           />
           <div className="absolute top-0 left-0 inline-flex items-center p-1 sm:p-2">
             <svg

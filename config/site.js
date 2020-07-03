@@ -9,4 +9,5 @@ exports.Site = {
   loginAdmin: `${siteServer}/user/login-admin`,
   registerMember: `${siteServer}/user/register-member`,
   loginMember: `${siteServer}/user/login-member`,
+  checkToken: `${siteServer}/user/check-token`
 };

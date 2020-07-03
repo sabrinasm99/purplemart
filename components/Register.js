@@ -3,14 +3,8 @@ import Link from "next/link";
 import Router from "next/router";
 import Axios from "axios";
 import { Site } from "../config/site";
-import Auth from '../settings/auth';
-import inBrowser from '../lib/checkInBrowser';
 
 function Register() {
-  console.log(Auth.checkStatus());
-  if (inBrowser) {
-  console.log(localStorage.getItem('token'))
-  }
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

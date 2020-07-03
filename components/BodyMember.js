@@ -1,7 +1,7 @@
 import React from "react";
 import { Site } from "../config/site";
 
-function BodyHome(props) {
+function BodyMember(props) {
   let productList = null;
   if (props.final.length > 0) {
     productList = props.final.map((val) => {
@@ -10,9 +10,7 @@ function BodyHome(props) {
           className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 flex-none p-1 py-3 md:p-2"
           key={val._id}
         >
-          <div
-            className="rounded-md shadow-md h-64 p-3 md:p-2 flex flex-col bg-white text-center "
-          >
+          <div className="rounded-md shadow-md h-64 p-3 md:p-2 flex flex-col bg-white text-center ">
             <div>
               <img
                 src={`${Site.ori}/${val.image}`}
@@ -50,7 +48,4 @@ function BodyHome(props) {
   );
 }
 
-
-
-
-export default BodyHome;
+export default BodyMember;
