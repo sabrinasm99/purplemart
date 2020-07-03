@@ -1,4 +1,4 @@
-var siteServer = "https://backend-product-minimarket.herokuapp.com";
+var siteServer = "http://localhost:5000";
 exports.Site = {
   ori: siteServer,
   getProduct: `${siteServer}/product/get-product`,

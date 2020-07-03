@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Router, { useRouter } from "next/router";
 import Link from "next/link";
-import {Site} from '../config/site';
+import { Site } from "../config/site";
 import { useSelector } from "react-redux";
 import Backdrop from "./Backdrop";
 import useBackdrop from "../hooks/useBackdrop";
@@ -11,28 +11,26 @@ import { logoutUser } from "./actions/authAction";
 
 function Navbar() {
   const test = useSelector((state) => state.test);
-  const auth = useSelector((state) => state.auth);
   const [backdrop, setBackdrop] = useBackdrop();
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState("");
   const router = useRouter();
 
   const onLogout = (event) => {
     event.preventDefault();
     clearAll();
     logoutUser();
-    Router.push('/login');
+    Router.push("/login");
   };
 
   const onChangeFilter = (event) => {
     setFilter(event.target.value);
     Axios.get(`${Site.getProduct}/?search=${filter}`)
-      .then(res => 
-        console.log(res, 'ini res'))
-      .catch(err => console.log(err, 'ini err'));
-  }
+      .then((res) => console.log(res, "ini res"))
+      .catch((err) => console.log(err, "ini err"));
+  };
 
   function clearAll() {
     setBackdrop(false);
@@ -48,7 +46,7 @@ function Navbar() {
           showSearch ? "z-0 hidden" : "block z-full"
         } flex w-full text-purple-800 bg-white top-0 inset-x-0 z-full shadow-md fixed`}
       >
-        <div className="pl-4 py-4 text-xl font-bold ">
+        <div className="pl-4 py-4 text-xl font-bold cursor-pointer">
           <Link href="/">
             <div>{test.title}</div>
           </Link>
@@ -191,10 +189,10 @@ function Navbar() {
         className={`${
           showAccount ? "block" : "hidden"
         } fixed text-purple-800 bg-white border-t-4 border-purple-500 left-auto right-0 w-40 shadow-md p-3 z-50`}
-        style={{top:'62px'}}
+        style={{ top: "62px" }}
       >
         <div className="text-center border-b-2 border-purple-800 text-xl tracking-widest capitalize">
-          {inBrowser && localStorage.getItem('name')}
+          {inBrowser && localStorage.getItem("name")}
         </div>
         <div
           className="flex py-2 px-1 items-baseline cursor-pointer"

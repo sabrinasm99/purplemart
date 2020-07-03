@@ -3,9 +3,6 @@ import { Provider } from "react-redux";
 import { Site } from "../config/site";
 import store from "../components/store";
 import inBrowser from "../lib/checkInBrowser";
-import { setAuthToken } from "../utils/AuthService";
-import jwt_decode from "jwt-decode";
-import { setCurrentUser } from "../components/actions/authAction";
 import CompMemberHome from '../components/MemberHome';
 import Router from "next/router";
 

@@ -16,7 +16,6 @@ import Router from "next/router";
 
 function MemberHome(props) {
   const auth = useSelector((state) => state.auth);
-  const [token, setToken] = React.useState("");
 
   useEffect(() => {
     if (inBrowser && localStorage.tokenLS) {

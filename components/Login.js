@@ -31,11 +31,12 @@ function Login() {
       password: password,
     };
     loginUser(userData);
-    Router.push("/member-home");
   };
   if (inBrowser && localStorage.tokenLS) {
     if (!auth.isAuthenticated) {
       return null;
+    } else {
+      Router.push('/member-home')
     }
   }
   return (

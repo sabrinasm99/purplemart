@@ -12,7 +12,6 @@ export const clearError = () => {
   }
 }
 export const loginUser = (userData) => {
-  console.log('LOGINUSER()')
 Axios
   .post(Site.loginMember, userData)
   .then(res => {
@@ -42,7 +41,6 @@ export const logoutUser = () => {
 
 
 export const setCurrentUser = (decoded) => {
-  console.log('MASUK GA')
   return {
       type: SET_CURRENT_USER,
       payload: decoded
