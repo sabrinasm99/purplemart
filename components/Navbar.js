@@ -8,14 +8,15 @@ import useBackdrop from "../hooks/useBackdrop";
 import inBrowser from "../lib/checkInBrowser";
 import Axios from "axios";
 import { logoutUser } from "./actions/authAction";
+import {onSearch} from './actions/searchAction';
 
-function Navbar() {
+function Navbar(props) {
   const test = useSelector((state) => state.test);
   const [backdrop, setBackdrop] = useBackdrop();
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
-  const [filter, setFilter] = useState("");
+  const [search, setSearch] = useState("");
   const router = useRouter();
 
   const onLogout = (event) => {
@@ -25,13 +26,14 @@ function Navbar() {
     Router.push("/login");
   };
 
-  const onChangeFilter = (event) => {
-    setFilter(event.target.value);
-    Axios.get(`${Site.getProduct}/?search=${filter}`)
-      .then((res) => console.log(res, "ini res"))
-      .catch((err) => console.log(err, "ini err"));
+  const onChangeSearch = (event) => {
+    setSearch(event.target.value);
   };
 
+  const onSubmitSearch = (event) => {
+    event.preventDefault();
+    onSearch(search);
+  }
   function clearAll() {
     setBackdrop(false);
     setShowMenu(false);
@@ -51,14 +53,16 @@ function Navbar() {
             <div>{test.title}</div>
           </Link>
         </div>
-        <div className="m-auto relative hidden sm:block w-1/2">
+        <form className="m-auto relative hidden sm:block w-1/2"
+        onSubmit={onSubmitSearch}>
           <input
             type="search"
             className="pl-8 w-full pr-4 py-1  rounded-lg border-gray-200 border-2 focus:outline-none text-gray-600 text-sm sm:text-base "
             placeholder="Search..."
-            onChange={onChangeFilter}
+            onChange={onChangeSearch}
           />
-          <div className="absolute top-0 left-0 inline-flex items-center p-1 sm:p-2">
+          <div className="absolute top-0 left-0 inline-flex items-center p-1 sm:p-2"
+          onClick={onSubmitSearch}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-5 sm:w-6 h-5 sm:h-6 text-gray-400"
@@ -74,7 +78,7 @@ function Navbar() {
               <line x1={17} y1={17} x2={13} y2={13} />
             </svg>
           </div>
-        </div>
+        </form>
         {router.pathname === "/member-home" ? (
           <React.Fragment>
             <div className="my-auto ml-auto">

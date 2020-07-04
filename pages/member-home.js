@@ -10,7 +10,6 @@ export default function memberhome(props) {
   if (inBrowser && !localStorage.tokenLS) {
     Router.push('/login')
   }
-
   return (
     <React.Fragment>
       <Provider store={store}>
