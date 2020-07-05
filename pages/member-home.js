@@ -17,24 +17,6 @@ export default function memberhome(props) {
           <title>Purple Mart</title>
         </Head>
         <CompMemberHome result={props.posts} />
-
-    
-        {/* <Navbar />
-        <div className="px-5 pt-5 sm:px-12 md:px-16 lg:px-20 xl:px-24 rounded-lg mt-px62">
-          <Keen className="rounded-lg">
-            <div className="keen-slider__slide rounded-lg">
-              <img src="/promo1.png" />
-            </div>
-            <div className="keen-slider__slide rounded-lg">
-              <img src="/promo3.png" />
-            </div>
-            <div className="keen-slider__slide rounded-lg">
-              <img src="/promo4.png" />
-            </div>
-          </Keen>
-        </div>
-        <Sidebar />
-        <BodyMember result={props.posts} /> */}
       </Provider>
     </React.Fragment>
   );
