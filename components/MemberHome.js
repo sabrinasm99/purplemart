@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import BodyMember from "./BodyMember";
-import Keen from "./Keen";
 import Sidebar from "./Sidebar";
 import { Site } from "../config/site";
 import { setAuthToken } from "../utils/AuthService";
@@ -13,10 +12,10 @@ import jwt_decode from "jwt-decode";
 import store from "./store";
 import { setCurrentUser } from "./actions/authAction";
 import Router from "next/router";
+import Carousel from './ReactCarousel';
 
 function MemberHome(props) {
   const auth = useSelector((state) => state.auth);
-
   useEffect(() => {
     if (inBrowser && localStorage.tokenLS) {
       setAuthToken(localStorage.tokenLS);
@@ -44,9 +43,10 @@ function MemberHome(props) {
   return (
     <React.Fragment>
       <Navbar />
-      <div className="px-5 pt-5 sm:px-12 md:px-16 lg:px-20 xl:px-24 rounded-lg mt-px62">
+      <Carousel />
+      {/* <div className="px-5 pt-5 sm:px-12 md:px-16 lg:px-20 xl:px-24 rounded-lg mt-px62">
         <Keen className="rounded-lg">
-          <div className="keen-slider__slide rounded-lg">
+        <div className="keen-slider__slide rounded-lg">
             <img src="/promo1.png" />
           </div>
           <div className="keen-slider__slide rounded-lg">
@@ -56,7 +56,7 @@ function MemberHome(props) {
             <img src="/promo4.png" />
           </div>
         </Keen>
-      </div>
+      </div> */}
       <Sidebar />
       <BodyMember final={props.result} />
     </React.Fragment>

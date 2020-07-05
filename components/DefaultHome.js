@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "./Navbar";
-import Keen from "./Keen";
 import Sidebar from "./Sidebar";
 import BodyHome from "./BodyHome";
 import inBrowser from "../lib/checkInBrowser";
 import { useSelector } from "react-redux";
-import Axios from "axios";
+import Carousel from './ReactCarousel';
 
 function DefaultHome(props) {
   const auth = useSelector((state) => state.auth);
@@ -19,12 +18,11 @@ function DefaultHome(props) {
   let filter = '';
   if (search.isChanged) {
     filter = search.payload;
-    // setProducts()
   }
   return (
     <React.Fragment>
       <Navbar />
-      <div className="px-5 pt-5 sm:px-12 md:px-16 lg:px-20 xl:px-24 rounded-lg mt-px62">
+      {/* <div className="px-5 pt-5 sm:px-12 md:px-16 lg:px-20 xl:px-24 rounded-lg mt-px62">
         <Keen className="rounded-lg">
           <div className="keen-slider__slide rounded-lg">
             <img src="/promo1.png" />
@@ -36,7 +34,8 @@ function DefaultHome(props) {
             <img src="/promo4.png" />
           </div>
         </Keen>
-      </div>
+      </div> */}
+      <Carousel />
       <Sidebar />
       <BodyHome final={filter ? filter : props.result} />
     </React.Fragment>

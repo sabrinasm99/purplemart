@@ -209,11 +209,12 @@ function Navbar(props) {
         </div>
       </div>
 
-      <div
+      <form
         className={`${
           showSearch ? "block" : "hidden"
         } fixed  bg-white left-0 z-full w-full shadow-md`}
         style={{ top: 0, height: "61px" }}
+        onSubmit={onSubmitSearch}
       >
         <div className="flex">
           <div
@@ -229,13 +230,15 @@ function Navbar(props) {
               className="w-full focus:outline-none pl-3"
               type="search"
               placeholder="Search..."
+              onChange={onChangeSearch}
             />
           </div>
-          <div className="ml-auto p-4 text-purple-800">
+          <div className="ml-auto p-4 text-purple-800"
+          onClick={onSubmitSearch}>
             <i className="fas fa-search"></i>
           </div>
         </div>
-      </div>
+      </form>
       <Backdrop
         clearAll={() => {
           clearAll();
