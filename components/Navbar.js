@@ -9,6 +9,7 @@ import inBrowser from "../lib/checkInBrowser";
 import Axios from "axios";
 import { logoutUser } from "./actions/authAction";
 import {onSearch} from './actions/searchAction';
+import { FaSearch, FaShoppingCart, FaSignInAlt, FaSignOutAlt, FaArrowLeft, FaBars, FaUser, FaTimes } from "react-icons/fa";
 
 function Navbar(props) {
   const test = useSelector((state) => state.test);
@@ -39,6 +40,7 @@ function Navbar(props) {
     setShowMenu(false);
     setShowSearch(false);
     setShowAccount(false);
+    setSearch('');
   }
 
   return (
@@ -59,6 +61,7 @@ function Navbar(props) {
             type="search"
             className="pl-8 w-full pr-4 py-1  rounded-lg border-gray-200 border-2 focus:outline-none text-gray-600 text-sm sm:text-base "
             placeholder="Search..."
+            value={search}
             onChange={onChangeSearch}
           />
           <div className="absolute top-0 left-0 inline-flex items-center p-1 sm:p-2"
@@ -89,12 +92,12 @@ function Navbar(props) {
                   setShowSearch(true);
                 }}
               >
-                <i className="fas fa-search"></i>
+                <FaSearch />
               </div>
             </div>
             <div className="pl-3 sm:pl-0 py-4 flex items-center">
               <div className="py-1 px-2 md:py-0 md:px-0 rounded-full md:rounded-none bg-gray-200 md:bg-white text-sm md:text-base cursor-pointer">
-                <i className="fas fa-shopping-cart"></i>
+                <FaShoppingCart />
               </div>
             </div>
             <div className="py-4 pr-4 pl-3 md:pl-6 md:flex items-center">
@@ -106,7 +109,7 @@ function Navbar(props) {
                   setBackdrop(true);
                 }}
               >
-                <i className="fas fa-user"></i>
+                <FaUser />
               </div>
             </div>
           </React.Fragment>
@@ -119,11 +122,11 @@ function Navbar(props) {
                 setShowSearch(true);
               }}
             >
-              <i className="fas fa-search"></i>
+              <FaSearch />
             </div>
             <div className="my-auto hidden sm:block text-lg cursor-pointer">
               <Link href="/login">
-                <i className="fas fa-shopping-cart"></i>
+                <FaShoppingCart />
               </Link>
             </div>
             <div className="p-4 hidden sm:flex items-center ">
@@ -140,7 +143,7 @@ function Navbar(props) {
                 setShowMenu(true);
               }}
             >
-              <i className="fas fa-bars"></i>
+              <FaBars />
             </div>
           </React.Fragment>
         )}
@@ -165,14 +168,14 @@ function Navbar(props) {
             }}
             className="cursor-pointer ml-auto text-white"
           >
-            <i className="fas fa-times"></i>
+            <FaTimes />
           </div>
         </div>
         <div className="py-2">
           <Link href="/login">
             <div className="p-2 flex border-b border-white">
               <div className="pr-3 text-white">
-                <i className="fas fa-sign-in-alt"></i>
+                <FaSignInAlt />
               </div>
               <div className="tracking-wider  text-white">Login</div>
             </div>
@@ -181,7 +184,7 @@ function Navbar(props) {
           <Link href="/login">
             <div className="p-2 flex border-b border-white">
               <div className="pr-3 text-white">
-                <i className="fas fa-shopping-cart"></i>
+                <FaShoppingCart />
               </div>
               <div className="tracking-wider  text-white">Cart</div>
             </div>
@@ -203,7 +206,7 @@ function Navbar(props) {
           onClick={onLogout}
         >
           <div className="pr-2">
-            <i className="fas fa-sign-out-alt"></i>
+            <FaSignOutAlt />
           </div>
           <div className="tracking-wider">Logout</div>
         </div>
@@ -212,8 +215,8 @@ function Navbar(props) {
       <form
         className={`${
           showSearch ? "block" : "hidden"
-        } fixed  bg-white left-0 z-full w-full shadow-md`}
-        style={{ top: 0, height: "61px" }}
+        } fixed  bg-white left-0 z-full w-full shadow-md flex items-center`}
+        style={{ top: 0, height: '62px' }}
         onSubmit={onSubmitSearch}
       >
         <div className="flex">
@@ -223,19 +226,20 @@ function Navbar(props) {
               clearAll();
             }}
           >
-            <i className="fas fa-arrow-left"></i>
+            <FaArrowLeft className='text-lg'/>
           </div>
           <div className="my-auto w-56">
             <input
               className="w-full focus:outline-none pl-3"
               type="search"
               placeholder="Search..."
+              value={search}
               onChange={onChangeSearch}
             />
           </div>
           <div className="ml-auto p-4 text-purple-800"
           onClick={onSubmitSearch}>
-            <i className="fas fa-search"></i>
+            <FaSearch className='text-lg'/>
           </div>
         </div>
       </form>

@@ -1,6 +1,7 @@
 import React from "react";
 import usePageResponsive from "../hooks/usePageResponsive";
 import dynamic from "next/dynamic";
+import {FaChevronCircleRight, FaChevronCircleLeft} from 'react-icons/fa';
 
 const Carousel = dynamic(
   () => import("@brainhubeu/react-carousel"),
@@ -17,22 +18,22 @@ function ReactCarousel() {
   } = usePageResponsive();
 
   let carouselConfig = {
-    itemWidth: size * 0.8,
+    itemWidth: size * 0.7,
     centered: true,
     slidesPerPage: 2,
     arrowRight: hover ? (
-      <i
-        className="fas fa-chevron-circle-right text-xl text-white cursor-pointer absolute z-10"
-        style={{ right: "25px" }}
-      ></i>
+      <FaChevronCircleRight
+        className="text-xl text-white cursor-pointer absolute z-10"
+        style={screenIsAtMost('lg') ? {right: '43px'} : screenIsAtMost('xl') ? {right: '67px'} : {right: '83px'}}
+      />
     ) : (
       ""
     ),
     arrowLeft: hover ? (
-      <i
-        className="fas fa-chevron-circle-left text-xl text-white cursor-pointer absolute z-10"
-        style={{ left: "25px" }}
-      ></i>
+      <FaChevronCircleLeft
+        className="text-xl text-white cursor-pointer absolute z-10"
+        style={screenIsAtMost('lg') ? {left: '43px'} : screenIsAtMost('xl') ? {left: '67px'} : {left: '83px'}}
+      />
     ) : (
       ""
     ),
@@ -49,7 +50,7 @@ function ReactCarousel() {
       onMouseLeave={() => {
         setHover(false);
       }}
-      className="mt-px62 pt-5 px-5 rounded-lg"
+      className="mt-px62 pt-5 px-5 sm:px-10 lg:px-16 xl:px-20 rounded-lg"
     >
       <Carousel
         addArrowClickHandler
