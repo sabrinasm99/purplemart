@@ -8,7 +8,7 @@ function Sidebar() {
         <div className="hidden md:block md:pl-2 md:font-bold">Categories</div>
         <div className="w-full flex flex-wrap md:flex-no-wrap">
           <div className="w-1/2 md:w-1/4 flex-none p-1">
-            <Link href="/static/grocery.jpg">
+            <Link href='/grocery'>
               <div className="rounded-md shadow-xl md:shadow-md text-center bg-white p-2 h-full flex flex-col cursor-pointer">
                 <img src='/grocery.jpg' alt="grocery" className="block m-auto" />
                 <span className="block pt-3 md:pt-0 mt-auto text-purple-800 tracking-wider md:text-xs md:font-medium">
@@ -19,15 +19,18 @@ function Sidebar() {
           </div>
 
           <div className="w-1/2  md:w-1/4 flex-none p-1">
+            <Link href='/momkids'>
             <div className="rounded-md shadow-xl md:shadow-md text-center bg-white p-2 h-full flex flex-col cursor-pointer">
               <img src='/momnkids.jpg' alt="mom & kids" className="block m-auto" />
               <span className="block pt-3 md:pt-0 mt-auto text-purple-800 tracking-wider md:text-xs md:font-medium">
                 MOM & KIDS
               </span>
             </div>
+            </Link>
           </div>
 
           <div className="w-1/2  md:w-1/4 flex-none p-1">
+            <Link href='/healthbeauty'>
             <div className="rounded-md shadow-xl md:shadow-md text-center bg-white p-2 h-full flex flex-col cursor-pointer">
               <img
                 src='/healthbeauty.jpg'
@@ -38,15 +41,18 @@ function Sidebar() {
                 HEALTH & BEAUTY
               </span>
             </div>
+            </Link>
           </div>
 
           <div className="w-1/2  md:w-1/4 flex-none p-1">
+            <Link href='/electronic'>
             <div className="rounded-md shadow-xl md:shadow-md text-center bg-white p-2 h-full flex flex-col cursor-pointer">
               <img src='/electronic.jpg' alt="electronic" className="block m-auto" />
               <span className="block pt-3 md:pt-0 mt-auto text-purple-800 tracking-wider md:text-xs md:font-medium">
                 ELECTRONIC
               </span>
             </div>
+            </Link>
           </div>
         </div>
       </div>

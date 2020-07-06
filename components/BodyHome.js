@@ -1,5 +1,6 @@
 import React from "react";
 import { Site } from "../config/site";
+import {FaPlus} from 'react-icons/fa';
 
 function BodyHome(props) {
   let productList = null;
@@ -11,7 +12,7 @@ function BodyHome(props) {
           key={val._id}
         >
           <div
-            className="rounded-md shadow-md h-64 p-3 md:p-2 flex flex-col bg-white text-center "
+            className="rounded-md shadow-md h-56 sm:h-64 p-3 md:p-2 flex flex-col bg-white text-center "
           >
             <div>
               <img
@@ -21,14 +22,15 @@ function BodyHome(props) {
               />
             </div>
             <div className="mt-auto w-full">
-              <span className="w-full text-gray-800 text-sm md:text-base">
+              <h6 className='text-xs font-light text-blue-500'>{(val.category).toUpperCase()}</h6>
+              <h6 className="w-full text-gray-800 text-sm md:text-base h-6 overflow-y-hidden">
                 {val.name}
-              </span>
+              </h6>
               <h6 className="mx-auto text-base md:text-lg font-medium md:font-semibold">
                 Rp{val.price.toLocaleString("id-ID")}
               </h6>
-              <button className="m-auto mt-1 bg-purple-800 text-white rounded-sm text-sm px-1 focus:outline-none">
-                <i className="fas fa-plus"></i>
+              <button className="m-auto mt-1 bg-purple-800 text-white rounded-sm text-sm p-1 focus:outline-none">
+                <FaPlus />
               </button>
             </div>
           </div>

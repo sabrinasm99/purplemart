@@ -46,6 +46,17 @@ function Login() {
           className="flex rounded-lg mx-8 sm:mx-40 md:mx-0 shadow-lg bg-white md:h-px380"
           style={{ width: "650px" }}
         >
+          <div className="hidden md:block w-1/2">
+            <img
+              src="/purplemart.jpg"
+              className="rounded-l-lg h-full object-cover"
+            />
+          </div>
+          
+            {/* <div className="text-red-600 font-medium text-center">
+                {message}
+              </div> */}
+
           <div className="p-5 sm:px-8 sm:py-5 w-full flex flex-col md:w-1/2">
             <h1 className="mb-5 text-3xl text-center text-purple-800 font-extrabold">
               Login
@@ -84,9 +95,6 @@ function Login() {
               </Link>
             </form>
 
-            {/* <div className="text-red-600 font-medium text-center">
-                {message}
-              </div> */}
             <div className="mt-auto mx-auto">
               <Link href="/">
                 <p className="font-semibold text-gray-500 flex hover:font-bold cursor-pointer">
@@ -94,12 +102,6 @@ function Login() {
                 </p>
               </Link>
             </div>
-          </div>
-          <div className="hidden md:block w-1/2">
-            <img
-              src="/purplemart.jpg"
-              className="rounded-r-lg h-full object-cover"
-            />
           </div>
         </div>
       </div>

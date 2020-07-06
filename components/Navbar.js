@@ -11,7 +11,7 @@ import { logoutUser } from "./actions/authAction";
 import {onSearch} from './actions/searchAction';
 import { FaSearch, FaShoppingCart, FaSignInAlt, FaSignOutAlt, FaArrowLeft, FaBars, FaUser, FaTimes } from "react-icons/fa";
 
-function Navbar(props) {
+function Navbar() {
   const test = useSelector((state) => state.test);
   const [backdrop, setBackdrop] = useBackdrop();
   const [showMenu, setShowMenu] = useState(false);
