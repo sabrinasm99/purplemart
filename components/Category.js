@@ -4,6 +4,8 @@ import { Site } from "../config/site";
 import { FaPlus } from "react-icons/fa";
 
 function Category(props) {
+  // console.log(props.category)
+  // console.log(props.result)
   let productList = null;
   if (props.result.length > 0) {
     productList = props.result
@@ -41,12 +43,13 @@ function Category(props) {
         );
       });
   }
+
   return (
     <React.Fragment>
       <Navbar />
       <div className="p-5 sm:p-0 sm:py-5 sm:w-4/5 mt-px62 sm:mx-auto">
         <h1 className="text-lg font-medium">{props.category}</h1>
-        <hr />
+        <hr />        
         <div className="w-full py-2 md:py-5 flex flex-wrap sm:m-auto">
           {productList}
         </div>

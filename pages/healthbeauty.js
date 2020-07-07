@@ -7,7 +7,7 @@ export default function healthbeauty(props) {
   return (
     <React.Fragment>
       <Provider store={store}>
-        <HealthBeauty result={props.posts} category='Health & Beauty' />
+        <HealthBeauty result={props.posts} category="Health & Beauty" />
       </Provider>
     </React.Fragment>
   );

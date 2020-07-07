@@ -42,7 +42,7 @@ function BodyHome(props) {
   return (
     <React.Fragment>
       <div className="w-4/5 m-auto">
-        <h1 className="text-lg font-medium">All Product</h1>
+        <h1 className="text-lg font-medium text-purple-800">All Product</h1>
         <hr />
         <div className="w-full py-2 md:py-5 flex flex-wrap m-auto">
           {productList}
