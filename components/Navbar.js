@@ -33,7 +33,7 @@ function Navbar() {
 
   const onSubmitSearch = (event) => {
     event.preventDefault();
-    onSearch(search);
+    if (router.pathname === '/') onSearch(search);
   }
   function clearAll() {
     setBackdrop(false);

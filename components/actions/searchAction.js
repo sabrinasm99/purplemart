@@ -3,7 +3,6 @@ import { Site } from "../../config/site";
 import store from "../store";
 import { GET_ERRORS, SET_CURRENT_SEARCH } from "./types";
 
-
 export const onSearch = (search) => {
   Axios.get(`${Site.getProduct}?search=${search}`)
     .then((res) => {
@@ -17,6 +16,7 @@ export const onSearch = (search) => {
       };
     });
 };
+
 export const setCurrentSearch = (resData) => {
   return {
     type: SET_CURRENT_SEARCH,
