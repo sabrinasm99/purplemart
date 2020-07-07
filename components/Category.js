@@ -1,16 +1,15 @@
 import React from "react";
+import {useSelector} from 'react-redux';
 import Navbar from "./Navbar";
 import { Site } from "../config/site";
 import { FaPlus } from "react-icons/fa";
 
 function Category(props) {
-  // console.log(props.category)
-  // console.log(props.result)
   let productList = null;
   if (props.result.length > 0) {
     productList = props.result
-      .filter((val) => val.category === props.category)
-      .map((val) => {
+      .filter(val => val.category === props.category)
+      .map(val => {
         return (
           <div
             className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 flex-none p-1 py-3 md:p-2"
