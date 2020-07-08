@@ -36,7 +36,7 @@ function Login() {
     if (!auth.isAuthenticated) {
       return null;
     } else {
-      Router.push('/member-home')
+      Router.push('/')
     }
   }
   return (

@@ -2,8 +2,6 @@ import Head from "next/head";
 import { Provider } from "react-redux";
 import { Site } from "../config/site";
 import store from "../components/store";
-import inBrowser from "../lib/checkInBrowser";
-import Router from "next/router";
 import DefaultHome from '../components/DefaultHome';
 
 
@@ -15,9 +13,6 @@ import DefaultHome from '../components/DefaultHome';
 // `
 
 export default function Home(props) {
-  if (inBrowser && localStorage.tokenLS) {
-    Router.push('/member-home');
-  }
   return (
     <React.Fragment>
       <Provider store={store}>

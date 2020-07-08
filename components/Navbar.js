@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 import Router, { useRouter } from "next/router";
 import Link from "next/link";
-import { Site } from "../config/site";
 import { useSelector } from "react-redux";
 import Backdrop from "./Backdrop";
 import useBackdrop from "../hooks/useBackdrop";
 import inBrowser from "../lib/checkInBrowser";
-import Axios from "axios";
 import { logoutUser } from "./actions/authAction";
-import {onSearch} from './actions/searchAction';
-import { FaSearch, FaShoppingCart, FaSignInAlt, FaSignOutAlt, FaArrowLeft, FaBars, FaUser, FaTimes } from "react-icons/fa";
+import { onSearch } from "./actions/searchAction";
+import {
+  FaSearch,
+  FaShoppingCart,
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaArrowLeft,
+  FaBars,
+  FaUser,
+  FaTimes,
+} from "react-icons/fa";
 
 function Navbar() {
   const test = useSelector((state) => state.test);
+  const auth = useSelector((state) => state.auth);
   const [backdrop, setBackdrop] = useBackdrop();
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
@@ -33,14 +41,14 @@ function Navbar() {
 
   const onSubmitSearch = (event) => {
     event.preventDefault();
-    if (router.pathname === '/') onSearch(search);
-  }
+    onSearch(search);
+  };
   function clearAll() {
     setBackdrop(false);
     setShowMenu(false);
     setShowSearch(false);
     setShowAccount(false);
-    setSearch('');
+    setSearch("");
   }
 
   return (
@@ -55,34 +63,42 @@ function Navbar() {
             <div>{test.title}</div>
           </Link>
         </div>
-        <form className="m-auto relative hidden sm:block w-1/2"
-        onSubmit={onSubmitSearch}>
-          <input
-            type="search"
-            className="pl-8 w-full pr-4 py-1  rounded-lg border-gray-200 border-2 focus:outline-none text-gray-600 text-sm sm:text-base "
-            placeholder="Search..."
-            value={search}
-            onChange={onChangeSearch}
-          />
-          <div className="absolute top-0 left-0 inline-flex items-center p-1 sm:p-2"
-          onClick={onSubmitSearch}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-5 sm:w-6 h-5 sm:h-6 text-gray-400"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+        {router.pathname === "/" ? (
+          <form
+            className="m-auto relative hidden sm:block w-1/2"
+            onSubmit={onSubmitSearch}
+          >
+            <input
+              type="search"
+              className="pl-8 w-full pr-4 py-1  rounded-lg border-gray-200 border-2 focus:outline-none text-gray-600 text-sm sm:text-base "
+              placeholder="Search..."
+              value={search}
+              onChange={onChangeSearch}
+            />
+            <div
+              className="absolute top-0 left-0 inline-flex items-center p-1 sm:p-2"
+              onClick={onSubmitSearch}
             >
-              <rect x={0} y={0} width={24} height={24} stroke="none" />
-              <circle cx={9} cy={9} r={5} />
-              <line x1={17} y1={17} x2={13} y2={13} />
-            </svg>
-          </div>
-        </form>
-        {router.pathname === "/member-home" ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 sm:w-6 h-5 sm:h-6 text-gray-400"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect x={0} y={0} width={24} height={24} stroke="none" />
+                <circle cx={9} cy={9} r={5} />
+                <line x1={17} y1={17} x2={13} y2={13} />
+              </svg>
+            </div>
+          </form>
+        ) : (
+          <div className="m-auto"></div>
+        )}
+        {auth.isAuthenticated ? (
           <React.Fragment>
             <div className="my-auto ml-auto">
               <div
@@ -216,7 +232,7 @@ function Navbar() {
         className={`${
           showSearch ? "block" : "hidden"
         } fixed  bg-white left-0 z-full w-full shadow-md flex items-center`}
-        style={{ top: 0, height: '62px' }}
+        style={{ top: 0, height: "62px" }}
         onSubmit={onSubmitSearch}
       >
         <div className="flex">
@@ -226,7 +242,7 @@ function Navbar() {
               clearAll();
             }}
           >
-            <FaArrowLeft className='text-lg'/>
+            <FaArrowLeft className="text-lg" />
           </div>
           <div className="my-auto w-56">
             <input
@@ -237,9 +253,8 @@ function Navbar() {
               onChange={onChangeSearch}
             />
           </div>
-          <div className="ml-auto p-4 text-purple-800"
-          onClick={onSubmitSearch}>
-            <FaSearch className='text-lg'/>
+          <div className="ml-auto p-4 text-purple-800" onClick={onSubmitSearch}>
+            <FaSearch className="text-lg" />
           </div>
         </div>
       </form>

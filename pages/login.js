@@ -8,7 +8,7 @@ import Router from "next/router";
 
 function login() {
 if (inBrowser && localStorage.tokenLS) {
-  Router.push('/member-home');
+  Router.push('/');
 }
   return (
     <React.Fragment>

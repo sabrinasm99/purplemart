@@ -1,6 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
+import { useSelector } from "react-redux";
 import { Site } from "../config/site";
-import {FaPlus} from 'react-icons/fa';
+import { FaPlus } from "react-icons/fa";
+import { addOrder } from "./actions/cartAction";
+import Router from "next/router";
+import Axios from 'axios';
 
 function BodyHome(props) {
   let productList = null;
@@ -11,9 +15,7 @@ function BodyHome(props) {
           className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 flex-none p-1 py-3 md:p-2"
           key={val._id}
         >
-          <div
-            className="rounded-md shadow-md h-56 sm:h-64 p-3 md:p-2 flex flex-col bg-white text-center "
-          >
+          <div className="rounded-md shadow-md h-56 sm:h-64 p-3 md:p-2 flex flex-col bg-white text-center ">
             <div>
               <img
                 src={`${Site.ori}/${val.image}`}
@@ -22,14 +24,18 @@ function BodyHome(props) {
               />
             </div>
             <div className="mt-auto w-full">
-              <h6 className='text-xs font-light text-blue-500'>{(val.category).toUpperCase()}</h6>
+              <h6 className="text-xs font-light text-blue-500">
+                {val.category.toUpperCase()}
+              </h6>
               <h6 className="w-full text-gray-800 text-sm md:text-base h-6 overflow-y-hidden">
                 {val.name}
               </h6>
               <h6 className="mx-auto text-base md:text-lg font-medium md:font-semibold">
                 Rp{val.price.toLocaleString("id-ID")}
               </h6>
-              <button className="m-auto mt-1 bg-purple-800 text-white rounded-sm text-sm p-1 focus:outline-none">
+              <button
+                className="m-auto mt-1 bg-purple-800 text-white rounded-sm text-sm p-1 focus:outline-none"
+              >
                 <FaPlus />
               </button>
             </div>
@@ -51,8 +57,5 @@ function BodyHome(props) {
     </React.Fragment>
   );
 }
-
-
-
 
 export default BodyHome;

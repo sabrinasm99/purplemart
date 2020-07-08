@@ -10,5 +10,6 @@ exports.Site = {
   loginAdmin: `${siteServer}/user/login-admin`,
   registerMember: `${siteServer}/user/register-member`,
   loginMember: `${siteServer}/user/login-member`,
-  checkToken: `${siteServer}/user/check-token`
+  checkToken: `${siteServer}/user/check-token`,
+  addOrder: `${siteServer}/order/add-order`
 };
