@@ -102,7 +102,7 @@ function Navbar() {
           <React.Fragment>
             <div className="my-auto ml-auto">
               <div
-                className="py-1 px-2 rounded-full bg-gray-200 text-sm block sm:hidden cursor-pointer"
+                className="p-2 rounded-full bg-gray-200 text-sm block sm:hidden cursor-pointer"
                 onClick={() => {
                   clearAll();
                   setShowSearch(true);
@@ -112,13 +112,15 @@ function Navbar() {
               </div>
             </div>
             <div className="pl-3 sm:pl-0 py-4 flex items-center">
-              <div className="py-1 px-2 md:py-0 md:px-0 rounded-full md:rounded-none bg-gray-200 md:bg-white text-sm md:text-base cursor-pointer">
+              <Link href='/cart'>
+              <div className="p-2 md:py-0 md:px-0 rounded-full md:rounded-none bg-gray-200 md:bg-white text-sm md:text-base cursor-pointer">
                 <FaShoppingCart />
               </div>
+              </Link>
             </div>
             <div className="py-4 pr-4 pl-3 md:pl-6 md:flex items-center">
               <div
-                className="py-1 px-2 md:py-0 md:px-0 rounded-full md:rounded-none bg-gray-200 md:bg-white text-sm md:text-base cursor-pointer"
+                className="p-2 md:py-0 md:px-0 rounded-full md:rounded-none bg-gray-200 md:bg-white text-sm md:text-base cursor-pointer"
                 onClick={() => {
                   clearAll();
                   setShowAccount(true);

@@ -1,19 +1,25 @@
-import React, {useState} from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Site } from "../config/site";
 import { FaPlus } from "react-icons/fa";
-import { addOrder } from "./actions/cartAction";
-import Router from "next/router";
-import Axios from 'axios';
+import { addProduct } from "./actions/cartAction";
 
 function BodyHome(props) {
+  const auth = useSelector(state => state.auth);
+
+  const onClickAdd = id => {
+    if (auth.isAuthenticated) {
+      addProduct(id);
+    }
+  }
+
   let productList = null;
   if (props.final.length > 0) {
     productList = props.final.map((val) => {
       return (
         <div
-          className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 flex-none p-1 py-3 md:p-2"
           key={val._id}
+          className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 flex-none p-1 py-3 md:p-2"
         >
           <div className="rounded-md shadow-md h-56 sm:h-64 p-3 md:p-2 flex flex-col bg-white text-center ">
             <div>
@@ -35,6 +41,7 @@ function BodyHome(props) {
               </h6>
               <button
                 className="m-auto mt-1 bg-purple-800 text-white rounded-sm text-sm p-1 focus:outline-none"
+                onClick={() => onClickAdd(val._id)}
               >
                 <FaPlus />
               </button>
