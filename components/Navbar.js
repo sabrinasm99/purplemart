@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 import Backdrop from "./Backdrop";
 import useBackdrop from "../hooks/useBackdrop";
-import inBrowser from "../lib/checkInBrowser";
 import { logoutUser } from "./actions/authAction";
 import { onSearch } from "./actions/searchAction";
+import usePageResponsive from "../hooks/usePageResponsive";
 import {
   FaSearch,
   FaShoppingCart,
@@ -17,16 +17,19 @@ import {
   FaUser,
   FaTimes,
 } from "react-icons/fa";
+import Username from "./username";
 
 function Navbar() {
   const test = useSelector((state) => state.test);
   const auth = useSelector((state) => state.auth);
+  const cart = useSelector((state) => state.cart);
   const [backdrop, setBackdrop] = useBackdrop();
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
   const [search, setSearch] = useState("");
   const router = useRouter();
+  const { screenIsAtLeast } = usePageResponsive();
 
   const onLogout = (event) => {
     event.preventDefault();
@@ -43,6 +46,7 @@ function Navbar() {
     event.preventDefault();
     onSearch(search);
   };
+
   function clearAll() {
     setBackdrop(false);
     setShowMenu(false);
@@ -54,8 +58,8 @@ function Navbar() {
   return (
     <React.Fragment>
       <div
-        className={` ${
-          showSearch ? "z-0 hidden" : "block z-full"
+        className={` ${showSearch ? "z-0 hidden" : "block z-full"} ${
+          cart.popUp.length > 0 ? "z-0" : "z-full"
         } flex w-full text-purple-800 bg-white top-0 inset-x-0 z-full shadow-md fixed`}
       >
         <div className="pl-4 py-4 text-xl font-bold cursor-pointer">
@@ -100,7 +104,7 @@ function Navbar() {
         )}
         {auth.isAuthenticated ? (
           <React.Fragment>
-            <div className="my-auto ml-auto">
+            <div className={`${router.pathname === '/' ? 'block' : 'hidden'} my-auto ml-auto`}>
               <div
                 className="p-2 rounded-full bg-gray-200 text-sm block sm:hidden cursor-pointer"
                 onClick={() => {
@@ -112,10 +116,24 @@ function Navbar() {
               </div>
             </div>
             <div className="pl-3 sm:pl-0 py-4 flex items-center">
-              <Link href='/cart'>
-              <div className="p-2 md:py-0 md:px-0 rounded-full md:rounded-none bg-gray-200 md:bg-white text-sm md:text-base cursor-pointer">
-                <FaShoppingCart />
-              </div>
+              <Link href="/cart">
+                <div
+                  className={`p-2 md:py-0 md:px-0 rounded-full md:rounded-none bg-gray-200 md:bg-white text-sm md:text-base cursor-pointer`}
+                >
+                  <FaShoppingCart />
+                  <span
+                    className={`${
+                      cart.popUp.length > 0 ? "flex" : "hidden"
+                    } fixed justify-center items-center right-0 top-0 rounded-full bg-red-500 text-white h-5 w-5 text-xs`}
+                    style={
+                      screenIsAtLeast("md")
+                        ? { right: "42px", top: "12px" }
+                        : { right: "49px", top: "12px" }
+                    }
+                  >
+                    {cart.popUp.length}
+                  </span>
+                </div>
               </Link>
             </div>
             <div className="py-4 pr-4 pl-3 md:pl-6 md:flex items-center">
@@ -134,7 +152,7 @@ function Navbar() {
         ) : (
           <React.Fragment>
             <div
-              className="flex items-center py-4 ml-auto text-lg sm:hidden"
+              className={`${router.pathname === '/' ? 'flex' : 'hidden'} items-center py-4 ml-auto text-lg sm:hidden`}
               onClick={() => {
                 clearAll();
                 setShowSearch(true);
@@ -191,20 +209,20 @@ function Navbar() {
         </div>
         <div className="py-2">
           <Link href="/login">
-            <div className="p-2 flex border-b border-white">
+            <div className="p-2 flex items-center border-b border-white">
               <div className="pr-3 text-white">
                 <FaSignInAlt />
               </div>
-              <div className="tracking-wider  text-white">Login</div>
+              <div className="tracking-wider text-white">Login</div>
             </div>
           </Link>
 
           <Link href="/login">
-            <div className="p-2 flex border-b border-white">
+            <div className="p-2 flex items-center border-b border-white">
               <div className="pr-3 text-white">
                 <FaShoppingCart />
               </div>
-              <div className="tracking-wider  text-white">Cart</div>
+              <div className="tracking-wider text-white">Cart</div>
             </div>
           </Link>
         </div>
@@ -217,13 +235,10 @@ function Navbar() {
         style={{ top: "62px" }}
       >
         <div className="text-center border-b-2 border-purple-800 text-xl tracking-widest capitalize">
-          {inBrowser && localStorage.getItem("name")}
+          <Username />
         </div>
-        <div
-          className="flex py-2 px-1 items-baseline cursor-pointer"
-          onClick={onLogout}
-        >
-          <div className="pr-2">
+        <div className="flex py-2 px-1 cursor-pointer" onClick={onLogout}>
+          <div className="p-1">
             <FaSignOutAlt />
           </div>
           <div className="tracking-wider">Logout</div>
@@ -260,6 +275,7 @@ function Navbar() {
           </div>
         </div>
       </form>
+
       <Backdrop
         clearAll={() => {
           clearAll();

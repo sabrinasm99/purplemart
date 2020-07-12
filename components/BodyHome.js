@@ -2,14 +2,19 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Site } from "../config/site";
 import { FaPlus } from "react-icons/fa";
-import { addProduct } from "./actions/cartAction";
+import { addProduct, addPopUp } from "./actions/cartAction";
+import { useToasts } from "react-toast-notifications";
 
 function BodyHome(props) {
   const auth = useSelector(state => state.auth);
+  const { addToast } = useToasts();
+
 
   const onClickAdd = id => {
     if (auth.isAuthenticated) {
       addProduct(id);
+      addPopUp(id);
+      addToast('Success Added', { appearance: "success", autoDismiss:10 })
     }
   }
 
@@ -40,7 +45,7 @@ function BodyHome(props) {
                 Rp{val.price.toLocaleString("id-ID")}
               </h6>
               <button
-                className="m-auto mt-1 bg-purple-800 text-white rounded-sm text-sm p-1 focus:outline-none"
+                className="mt-1 mx-auto mb-auto bg-purple-800 text-white rounded-sm text-sm p-1 focus:outline-none"
                 onClick={() => onClickAdd(val._id)}
               >
                 <FaPlus />

@@ -3,6 +3,8 @@ import { Provider } from "react-redux";
 import { Site } from "../config/site";
 import store from "../components/store";
 import DefaultHome from '../components/DefaultHome';
+import {ToastProvider} from 'react-toast-notifications';
+
 
 
 // import Router from "next/router";
@@ -16,6 +18,7 @@ export default function Home(props) {
   return (
     <React.Fragment>
       <Provider store={store}>
+        <ToastProvider placement='bottom-right' transitionDuration={0.01}>
         <Head>
           <title>Purple Mart</title>
         </Head>
@@ -23,6 +26,7 @@ export default function Home(props) {
           Wawo
         </Button> */}
       <DefaultHome result={props.posts} />
+      </ToastProvider>
       </Provider>
     </React.Fragment>
   );

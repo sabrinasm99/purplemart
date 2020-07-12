@@ -6,11 +6,9 @@ import inBrowser from "../lib/checkInBrowser";
 import { useSelector } from "react-redux";
 import Carousel from "./ReactCarousel";
 import { Site } from "../config/site";
-import { setAuthToken } from "../utils/AuthService";
 import jwt_decode from "jwt-decode";
 import store from "./store";
-import { setCurrentUser } from "./actions/authAction";
-import { logoutUser } from "./actions/authAction";
+import { setCurrentUser, logoutUser } from "./actions/authAction";
 import Axios from "axios";
 import Router from "next/router";
 
@@ -19,10 +17,7 @@ function DefaultHome(props) {
   const search = useSelector((state) => state.search);
 
   if (!auth.isAuthenticated) {
-    // React.useEffect(() => {
     if (inBrowser && localStorage.tokenLS) {
-      // setAuthToken(localStorage.tokenLS);
-
       Axios.post(
         Site.checkToken,
         {},
@@ -42,7 +37,6 @@ function DefaultHome(props) {
         });
     }
   }
-  // }, []);
   let filter = "";
   if (search.isChanged) {
     filter = search.payload;
