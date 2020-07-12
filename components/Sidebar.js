@@ -4,7 +4,7 @@ import Link from "next/link";
 function Sidebar() {
   return (
     <React.Fragment>
-      <div className="w-4/5 md:w-3/5 m-auto py-5 md:px-3 md:py-3 md:my-5 md:bg-gray-200 md:overflow-x-auto md:rounded-md">
+      <div className="w-4/5 md:w-3/5 m-auto py-5 md:py-0 md:p-3 md:my-5 md:bg-gray-200 md:overflow-x-auto md:rounded-md">
         <div className="hidden md:block md:pl-2 md:font-bold tracking-wide text-purple-800">Categories</div>
         <div className="w-full flex flex-wrap md:flex-no-wrap">
           <div className="w-1/2 sm:w-1/3 md:w-1/4 flex-none p-1">
