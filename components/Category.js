@@ -42,6 +42,8 @@ function Category(props) {
       addProduct(id);
       addPopUp(id);
       addToast("Success Added", { appearance: "success", autoDismiss: 10 });
+    } else {
+      Router.push('/login');
     }
   };
   let productList = null;

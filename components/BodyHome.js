@@ -1,4 +1,5 @@
 import React from "react";
+import Router from 'next/router';
 import { useSelector } from "react-redux";
 import { Site } from "../config/site";
 import { FaPlus } from "react-icons/fa";
@@ -15,6 +16,8 @@ function BodyHome(props) {
       addProduct(id);
       addPopUp(id);
       addToast('Success Added', { appearance: "success", autoDismiss:10 })
+    } else {
+      Router.push('/login');
     }
   }
 
