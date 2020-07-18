@@ -33,7 +33,7 @@ function BodyHome(props) {
             <div>
               <img
                 src={`${Site.ori}/${val.image}`}
-                alt="product"
+                alt={val.image}
                 className="h-24 md:h-32 m-auto"
               />
             </div>
