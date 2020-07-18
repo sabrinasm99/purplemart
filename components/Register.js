@@ -46,8 +46,8 @@ function Register() {
                 <label className="w-full md:w-1/3 block">Name</label>
                 <input
                   type="text"
-                  className="w-full md:w-2/3 block border border-gray-500 border-solid rounded-lg pl-3 p-1 focus:outline-none"
-                  placeholder="Thomas Lion"
+                  className="w-full md:w-2/3 block border border-gray-300 border-solid rounded-lg pl-3 p-1 focus:outline-none focus:shadow-outline"
+                  placeholder="Your Name"
                   onChange={changeInputName}
                   value={name}
                 />
@@ -56,8 +56,8 @@ function Register() {
                 <label className="w-full md:w-1/3 block">Username</label>
                 <input
                   type="text"
-                  className="w-full md:w-2/3 block border border-gray-500 border-solid rounded-lg pl-3 p-1 focus:outline-none"
-                  placeholder="thomas_14"
+                  className="w-full md:w-2/3 block border border-gray-300 border-solid rounded-lg pl-3 p-1 focus:outline-none focus:shadow-outline"
+                  placeholder="Your Username"
                   onChange={changeInputUsername}
                   value={username}
                 />
@@ -66,7 +66,7 @@ function Register() {
                 <label className="w-full md:w-1/3 block">Password</label>
                 <input
                   type="password"
-                  className="w-full md:w-2/3 block border border-gray-500 border-solid rounded-lg pl-3 p-1 focus:outline-none"
+                  className="w-full md:w-2/3 block border border-gray-300 border-solid rounded-lg pl-3 p-1 focus:outline-none focus:shadow-outline"
                   placeholder="********"
                   onChange={changeInputPassword}
                   value={password}
@@ -75,14 +75,14 @@ function Register() {
               <div className="block md:flex p-2 md:p-4">
                 <label className="w-full md:w-1/3 block">Address</label>
                 <textarea
-                  className="focus:outline-none w-full md:w-2/3 block border border-gray-500 border-solid rounded-lg h-32 pl-3 p-1"
-                  placeholder="Jalan Duri Selatan II"
+                  className="focus:outline-none focus:shadow-outline w-full md:w-2/3 block border border-gray-300 border-solid rounded-lg h-32 pl-3 p-1"
+                  placeholder="Your Address"
                   onChange={changeInputAddress}
                   value={address}
                 />
               </div>
             </div>
-            <button className="bg-purple-800 focus:outline-none hover:bg-purple-600 text-white font-bold rounded-lg w-full p-2 mt-3 tracking-widest"
+            <button className="bg-purple-800 focus:outline-none focus:shadow-outline hover:bg-purple-600 text-white font-bold rounded-lg w-full p-2 mt-3 tracking-widest"
             onClick={submitRegister}>
               REGISTER NOW
             </button>
