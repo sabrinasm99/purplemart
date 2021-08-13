@@ -17,7 +17,7 @@
     "jwt-decode": "^2.2.0",
     "keen-slider": "^4.2.6",
     "netlify-plugin-cache-nextjs": "^1.4.0",
-    "next": "9.4.4",
+    "next": "11.1.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-hooks-global-state": "^1.0.0",
